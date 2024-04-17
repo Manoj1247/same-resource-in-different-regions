@@ -1,15 +1,9 @@
-module "storage_east"{
-    source = "./modules/storage"
-    name_prefix = "us-east-"
-    providers = {
-        aws = aws.us-east
-    }
-}
 
-module "storage_west"{
-    source = "./modules/storage"
-    name_prefix = "us-west-"
+
+module "application"{
+    source = "./modules/application"
     providers = {
-        aws = aws.us-west 
+        aws.src = aws.us_east,
+        aws.dst = aws.us_west
     }
 }
